@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <center>
+        <div style="display: flex;justify-content: center;gap: 10px;">
+            <input type="text" id="myTextBox" placeholder="Enter number here">
+            <br>
+            <div>
+                <button onclick="submitText()">Show Set 1</button>
+                <button onclick="submitText2()">show Set 2</button>
+                <div style="position: sticky">
+                    <button onclick="autoScroll()">AutoScroll</button>
+                </div>
+            </div>
+        </div>
+        <br>
+        <div id="image"></div>
+    </center>
+</body>
+<script>
+    alert("Please refrain from misusing this website. It is intended for entertainment purposes only. Credit: As always, my name is well-known.");
+    function submitText(){
+        document.getElementById("image").innerHTML="";
+        let valu=Number(document.getElementById("myTextBox").value)
+        var div = document.getElementById("image");
+        for (var i = 1; i <= valu; i++) {
+            var h1 = document.createElement("img");
+            h1.setAttribute("src","https://sgi.servergi.com:8077/ISIMSGI/Services/getImage.ashx?Category=Student&MasterId="+(90937+i)+"&ImageRefName=Photo&IdCode=&height=120&width=100");
+            h1.setAttribute("width","100px");
+            h1.setAttribute("title",(90937+i));
+            // h1.setAttribute("loading","lazy");
+            div.appendChild(h1);
+        }
+    }
+    function submitText2(){
+        document.getElementById("image").innerHTML="";
+        let valu=Number(document.getElementById("myTextBox").value)
+        var div = document.getElementById("image");
+        for (var i = 1; i <= valu; i++) {
+            var h1 = document.createElement("img");
+            h1.setAttribute("src","https://sgi.servergi.com:8077/ISIMSGI/Services/getImage.ashx?Category=Student&MasterId="+(90937-i)+"&ImageRefName=Photo&IdCode=&height=120&width=100");
+            h1.setAttribute("width","100px");
+            h1.setAttribute("title",(90937-i));
+            h1.setAttribute("loading","lazy");
+            div.appendChild(h1);
+        }
+    }
+    function autoScroll() {
+        window.scrollBy(0, 2); // Scrolls down by 2 pixels every interval
+        setTimeout(autoScroll, 10); // Calls itself every 10 milliseconds
+    }
+</script>
+</html>
