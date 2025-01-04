@@ -7,14 +7,18 @@
 </head>
 <body>
     <center>
-        <div style="display: flex;justify-content: center;gap: 10px;">
-            <input type="text" id="myTextBox" placeholder="Enter number here">
-            <br>
-            <div>
-                <button onclick="submitText()">Show Set 1</button>
-                <button onclick="submitText2()">show Set 2</button>
-                <div style="position: sticky">
-                    <button onclick="autoScroll()">AutoScroll</button>
+        <div class="sticky">
+            <div style="display: flex;justify-content: center;gap: 10px;">
+                <div>
+                    <input type="text" id="myTextBox" placeholder="Enter number here">
+                    <!-- <br>
+                    <br> -->
+                    <button onclick="submitText()">Show Set 1</button>
+                    <button onclick="submitText2()">Show Set 2</button>
+                    <button onclick="removeduplicate()">Remove Empty Image</button>
+                    <!-- <div> -->
+                        <button onclick="autoScroll()">AutoScroll</button>
+                    <!-- </div> -->
                 </div>
             </div>
         </div>
@@ -24,6 +28,8 @@
 </body>
 <script>
     alert("Please refrain from misusing this website. It is intended for entertainment purposes only. Credit: As always, my name is well-known.");
+    removeduplicate();
+    setInterval(removeduplicate(),2000);
     function submitText(){
         document.getElementById("image").innerHTML="";
         let valu=Number(document.getElementById("myTextBox").value)
@@ -33,6 +39,7 @@
             h1.setAttribute("src","https://sgi.servergi.com:8077/ISIMSGI/Services/getImage.ashx?Category=Student&MasterId="+(90937+i)+"&ImageRefName=Photo&IdCode=&height=120&width=100");
             h1.setAttribute("width","100px");
             h1.setAttribute("title",(90937+i));
+            h1.setAttribute("id",(90937-i));
             // h1.setAttribute("loading","lazy");
             div.appendChild(h1);
         }
@@ -47,7 +54,7 @@
             h1.setAttribute("width","100px");
             h1.setAttribute("title",(90937-i));
             h1.setAttribute("id",(90937-i));
-            h1.setAttribute("loading","lazy");
+            // h1.setAttribute("loading","lazy");
             div.appendChild(h1);
         }
     }
@@ -55,5 +62,27 @@
         window.scrollBy(0, 2); // Scrolls down by 2 pixels every interval
         setTimeout(autoScroll, 10); // Calls itself every 10 milliseconds
     }
+    function removeduplicate(){
+        document.querySelectorAll("img").forEach(
+        a=>{
+        if(a.height==a.width){
+        document.getElementById("image").removeChild(a);
+        console.log("removed");
+        }
+        })
+    }
 </script>
+<style>
+    *{
+        margin: 0;
+        padding: 0;
+    }
+.sticky {
+  position: sticky;
+  top: 0;
+  /* background-color: yellow; */
+  padding: 10px;
+  font-size: 20px;
+}
+</style>
 </html>
